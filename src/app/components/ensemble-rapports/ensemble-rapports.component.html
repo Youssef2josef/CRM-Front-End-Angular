@@ -1,5 +1,5 @@
 <mat-form-field>
-    <input matInput (keyup)="applyFilterColumn($event.target.value)"
+    <input matInput [(ngModel)]="filterValue" (keyup)="applyFilterColumn($event)"
         placeholder="Critères meilleurs filtrage :Type / Nom / Prénom / Email / Client / Region">
 </mat-form-field>
 

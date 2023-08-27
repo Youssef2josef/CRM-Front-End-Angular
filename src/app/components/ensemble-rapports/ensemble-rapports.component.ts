@@ -42,6 +42,7 @@ export interface UserData {
 export class EnsembleRapportsComponent implements OnInit {
 
   rapports: UserData[] = [];
+  filterValue: string;
   startDateFilter: Date;
   endDateFilter: Date;
   singleDateFilter: Date;
@@ -129,38 +130,38 @@ export class EnsembleRapportsComponent implements OnInit {
     );
   }
 
-  applyFilterColumn(filterValue: string) {
-    if (filterValue != null && typeof filterValue === 'string') {
-      filterValue = filterValue.trim().toLowerCase();
+  applyFilterColumn() {
+    if (this.filterValue != null && typeof this.filterValue === 'string') {
+      this.filterValue = this.filterValue.trim().toLowerCase();
 
 
       const filteredUsers = this.rapports.filter(rapport => {
         // Filtrage par les colonnes textuelles
         const textMatches = (
-          rapport.object.nom.toLowerCase().includes(filterValue) ||
-          rapport.client.name.toLowerCase().includes(filterValue) ||
-          rapport.user.firstName.toLowerCase().includes(filterValue) ||
-          rapport.user.lastName.toLowerCase().includes(filterValue) ||
-          rapport.user.email.toLowerCase().includes(filterValue) ||
-          rapport.region.nom.toLowerCase().includes(filterValue) ||
-          rapport.text.toLowerCase().includes(filterValue)
+          rapport.object.nom.toLowerCase().includes(this.filterValue) ||
+          rapport.client.name.toLowerCase().includes(this.filterValue) ||
+          rapport.user.firstName.toLowerCase().includes(this.filterValue) ||
+          rapport.user.lastName.toLowerCase().includes(this.filterValue) ||
+          rapport.user.email.toLowerCase().includes(this.filterValue) ||
+          rapport.region.nom.toLowerCase().includes(this.filterValue) ||
+          rapport.text.toLowerCase().includes(this.filterValue)
         );
 
         // Filtrage par les dates
         if (textMatches) {
           let date = this.convertToDate(rapport.date);
           if (this.startDateFilter && this.endDateFilter) {
-            console.log("true");
+            //console.log("true");
             return date >= this.startDateFilter && date <= this.endDateFilter;
           } else if (this.singleDateFilter) {
-            console.log("true2");
+            //console.log("true2");
             return date.getTime() === this.singleDateFilter.getTime();
           } else {
-            console.log("true3");
+            //console.log("true3");
             return true; // Pas de filtres de dates
           }
         } else {
-          console.log("false");
+          //console.log("false");
           return false;
         }
       });
@@ -168,7 +169,7 @@ export class EnsembleRapportsComponent implements OnInit {
       this.dataSource.data = filteredUsers;
       this.dataSource.paginator.length = filteredUsers.length;
     } else {
-      console.log(filterValue);
+      console.log(this.filterValue);
       
       const filteredUsers = this.rapports.filter(rapport => {
         // Filtrage par les dates
@@ -306,13 +307,18 @@ export class EnsembleRapportsComponent implements OnInit {
   }
   resetStartDate() {
     this.startDateFilter = null;
+    this.applyFilterColumn();
   }
   
   resetEndDate() {
     this.endDateFilter = null;
+    this.applyFilterColumn();
+
   }
   resetSingleDate() {
     this.singleDateFilter = null;
+    this.applyFilterColumn();
+
   }
   
 }
