@@ -1,6 +1,8 @@
 <mat-form-field>
     <input matInput [(ngModel)]="filterValue" (keyup)="applyFilterColumn($event)"
         placeholder="Critères meilleurs filtrage :Type / Nom / Prénom / Email / Client / Region">
+        <button mat-raised-button color="warn" matSuffix (click)="resetFilterValue()" class="boutton-date-debut">
+            <i class="fa-solid fa-circle-xmark"></i> Reset</button>
 </mat-form-field>
 
 <mat-form-field class="date-debut">

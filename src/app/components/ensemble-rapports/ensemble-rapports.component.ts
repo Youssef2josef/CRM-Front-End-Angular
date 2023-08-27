@@ -131,10 +131,8 @@ export class EnsembleRapportsComponent implements OnInit {
   }
 
   applyFilterColumn() {
-    if (this.filterValue != null && typeof this.filterValue === 'string') {
+    if (this.filterValue != null && this.filterValue != undefined && this.filterValue != '' && typeof this.filterValue === 'string') {
       this.filterValue = this.filterValue.trim().toLowerCase();
-
-
       const filteredUsers = this.rapports.filter(rapport => {
         // Filtrage par les colonnes textuelles
         const textMatches = (
@@ -150,15 +148,25 @@ export class EnsembleRapportsComponent implements OnInit {
         // Filtrage par les dates
         if (textMatches) {
           let date = this.convertToDate(rapport.date);
-          if (this.startDateFilter && this.endDateFilter) {
-            //console.log("true");
+          if (this.startDateFilter && this.endDateFilter && !this.singleDateFilter) {
+            console.log("true");
             return date >= this.startDateFilter && date <= this.endDateFilter;
-          } else if (this.singleDateFilter) {
-            //console.log("true2");
+          } else if (this.singleDateFilter && !this.startDateFilter && !this.endDateFilter) {
+            console.log("true2");
             return date.getTime() === this.singleDateFilter.getTime();
+          } else if((this.startDateFilter || this.endDateFilter) && this.singleDateFilter) {
+            console.log("true3");
+            Swal.fire({
+              title: 'Erreur!',
+              text: "Soit Par un intervalle de date Soit un seul date unique !!",
+              icon: 'warning',
+              timer: 3000, // Durée en millisecondes (ici, 2 secondes)
+              showConfirmButton: true // Pour masquer le bouton "OK"
+            });
+            return false; 
           } else {
-            //console.log("true3");
-            return true; // Pas de filtres de dates
+            console.log("true4");
+            return true;
           }
         } else {
           //console.log("false");
@@ -190,10 +198,9 @@ export class EnsembleRapportsComponent implements OnInit {
               showConfirmButton: true // Pour masquer le bouton "OK"
             });
             return false; 
-          }
-          else{
+          } else {
             console.log("true4");
-            return false;
+            return true;
           }
       });
       this.dataSource.data = filteredUsers;
@@ -305,6 +312,12 @@ export class EnsembleRapportsComponent implements OnInit {
       throw new Error("Input type not supported");
     }
   }
+
+  resetFilterValue() {
+    this.filterValue = null;
+    this.applyFilterColumn();
+  }
+
   resetStartDate() {
     this.startDateFilter = null;
     this.applyFilterColumn();
@@ -313,12 +326,10 @@ export class EnsembleRapportsComponent implements OnInit {
   resetEndDate() {
     this.endDateFilter = null;
     this.applyFilterColumn();
-
   }
   resetSingleDate() {
     this.singleDateFilter = null;
     this.applyFilterColumn();
-
   }
   
 }
