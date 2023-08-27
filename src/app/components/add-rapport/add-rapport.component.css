@@ -1,0 +1,27 @@
+
+mat-card{
+    margin: 2%;
+    text-align: left;
+}
+
+mat-form-field {
+    width: 98%;
+    margin: 1%;
+}
+
+.mat-50{
+    width: 48%;
+    margin: 1%;
+}
+
+button{
+    margin: 2px;
+}
+.mat-dialog-actions{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.password{
+    display: flex;
+}

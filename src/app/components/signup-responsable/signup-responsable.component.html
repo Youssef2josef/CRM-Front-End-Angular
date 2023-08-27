@@ -1,0 +1,98 @@
+<div class="login-body">
+    <div class="box">
+        <form [formGroup]="multiStep">
+
+            <div class="box-1" *ngIf="step == 1">
+                <h2>{{titleOne}}</h2>
+                <div class="inputBox">
+                    <input type="text" name="firstName" id="firstName" required formControlName="firstName">
+                    <span class="span-details" [@inputBoxAnimation]>Nom</span>
+                    <i [@inputIAnimation]></i>
+                </div>
+                <span
+                class="text-danger"
+                *ngIf="multiStep.controls['firstName'].invalid &&(multiStep.controls['firstName'].touched ||multiStep.controls['firstName'].dirty)">
+                <span *ngIf="multiStep.controls['firstName'].errors?.required"> required</span>
+                <span *ngIf="multiStep.controls['firstName'].errors?.minlength"> minLen</span>              
+                </span>
+                <div class="inputBox">
+                    <input type="text" name="lastName" id="lastName" required formControlName="lastName">
+                    <span class="span-details" [@inputBoxAnimation]>Prénom</span>
+
+                    <i [@inputIAnimation]></i>
+                </div>
+                <span
+                class="text-danger"
+                *ngIf="multiStep.controls['lastName'].invalid &&(multiStep.controls['lastName'].touched ||multiStep.controls['lastName'].dirty)">
+                <span *ngIf="multiStep.controls['lastName'].errors?.required"> required</span>
+                <span *ngIf="multiStep.controls['lastName'].errors?.minlength"> minLen</span>              
+                </span>
+            </div>
+            <div class="box-1" *ngIf="step == 2">
+                <h2>{{titleTwo}}</h2>
+                <div class="inputBox">
+                    <input type="text" name="email" id="email" required formControlName="email">
+                    <span class="span-details" [@inputBoxAnimation]>Email</span>
+
+                    <i [@inputIAnimation]></i>
+                </div>
+                <span
+            class="text-danger"
+            *ngIf="
+              multiStep.controls['email'].invalid &&
+              (multiStep.controls['email'].touched ||
+                multiStep.controls['email'].dirty)
+            "
+            >
+            
+            <span *ngIf="multiStep.controls['email'].errors?.required"> required</span>
+            <span *ngIf="multiStep.controls['email'].errors?.email"> email invalid</span>              
+            </span>
+
+                <div class="inputBox">
+                    <input type="password" name="password" id="password" required formControlName="password" (input)="getPasswordErrorMessage()">
+                    <span class="span-details" [@inputBoxAnimation]>Mot de Passe</span>
+
+                    <i [@inputIAnimation]></i>
+                </div>
+                <span class="text-danger">{{ getPasswordErrorMessage() }}</span>
+            </div>
+            
+            <div class="box-1" *ngIf="step == 3" >
+                <h2>{{titleThree}}</h2>
+                <div class="inputBox">
+                    <label class="col-sm-2">
+                        regions
+                    </label>
+                    <select name="regions-select" class="form-control" (change)="changeRegion($event)"
+                        formControlName="region">
+                        <option value="null">--Select--</option>
+                        <option *ngFor="let i of regions" [value]="i.nom">
+                            {{i.nom}}
+                        </option>
+                    </select>
+
+                </div>
+                <div class="text-danger">{{ getRegionErrorMessage() }}</div>
+            </div>
+            <div class="text-danger">{{ messageErreur}}</div>
+
+            <div class="box-btn">
+                <button type="button" *ngIf="step != 1" (click)="previous()">
+                    Previous
+                </button>
+                <button type="button" *ngIf="step != 3" (click)="next()">
+                    Next
+                </button>
+                <button type="button" *ngIf="step == 1" (click)="go()">
+                    Connexion
+                </button>
+                <button type="submit" *ngIf="step == 3" (click)="signUp()">
+                    Submit
+                </button>
+            </div>
+            <br>
+        </form>
+
+    </div>
+</div>

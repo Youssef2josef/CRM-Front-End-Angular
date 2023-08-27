@@ -1,0 +1,89 @@
+<app-header (sideNavToggled)="sideNavStatus = $event;"></app-header>
+<main>
+    <app-side-nav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-side-nav>
+    <div class="display-body p-3" [ngClass]="{'display-body-shrink':sideNavStatus}">
+        <form #editUserForm="ngForm" (ngSubmit)="editUser()">
+        <div class="example-action-buttons">
+            <button mat-button mat-raised-button color="primary" type="button" (click)="accordion.openAll()">Basculer Tous</button>
+            <button mat-button mat-raised-button color="accent" type="button" (click)="accordion.closeAll()">Fermer Tous</button>
+        </div>
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Info Personnelle
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Type your name and age
+                        <mat-icon><i class="fa-solid fa-circle-user"></i></mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field>
+                    <mat-label>Prénom</mat-label>
+                    <input matInput [(ngModel)]="findedUser.firstName" [ngModelOptions]="{standalone: true}" placeholder="Prénom">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Nom</mat-label>
+                    <input matInput [(ngModel)]="findedUser.lastName" [ngModelOptions]="{standalone: true}" placeholder="Nom">
+                </mat-form-field>
+                <mat-action-row>
+                    <button mat-button color="primary" type="button" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Info Compte
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Configurer Votre Compte Informations
+                        <mat-icon><i class="fa-solid fa-folder-open"></i></mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput [(ngModel)]="findedUser.email" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput [(ngModel)]="findedUser.password" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+
+                <mat-action-row>
+                    <button mat-button color="warn" type="button" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" type="button" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Region Info
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Configurer Votre Region Informations
+                        <mat-icon><i class="fa-solid fa-location-dot"></i></mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field>
+                    <mat-label>Region</mat-label>
+                    <input matInput [(ngModel)]="findedUser.region.nom" [ngModelOptions]="{standalone: true}" name="region.nom" placeholder="Nom Region">
+                </mat-form-field>
+
+                <mat-action-row>
+                    <button mat-button color="warn" type="button" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" type="button" (click)="nextStep()">End</button>
+                    <button mat-button color="primary" type="submit">Done?</button>
+
+                </mat-action-row>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+        </form>
+    </div>
+</main>

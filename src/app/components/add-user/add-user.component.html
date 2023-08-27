@@ -1,0 +1,78 @@
+<form [formGroup]="multiStep" (ngSubmit)="addAgent()">
+
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>
+                Nom:
+            </mat-label>
+            <input matInput name="firstName" id="firstName" required formControlName="firstName" placeholder="Nom">
+            <span class="text-danger"
+                *ngIf="multiStep.controls['firstName'].invalid &&(multiStep.controls['firstName'].touched ||multiStep.controls['firstName'].dirty)">
+                <span *ngIf="multiStep.controls['firstName'].errors?.required"> required</span>
+                <span *ngIf="multiStep.controls['firstName'].errors?.minlength"> minLen</span>
+            </span>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Prenom:
+            </mat-label>
+            <input matInput name="lastName" id="lastName" required formControlName="lastName" placeholder="Prénom">
+            <span class="text-danger"
+                *ngIf="multiStep.controls['lastName'].invalid &&(multiStep.controls['lastName'].touched ||multiStep.controls['lastName'].dirty)">
+                <span *ngIf="multiStep.controls['lastName'].errors?.required"> required</span>
+                <span *ngIf="multiStep.controls['lastName'].errors?.minlength"> minLen</span>
+            </span>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Email:
+            </mat-label>
+            <input matInput name="email" id="email" required formControlName="email" placeholder="Email">
+            <span class="text-danger"
+                *ngIf="multiStep.controls['email'].invalid &&(multiStep.controls['email'].touched ||multiStep.controls['email'].dirty)">
+                <span *ngIf="multiStep.controls['email'].errors?.required"> required</span>
+                <span *ngIf="multiStep.controls['email'].errors?.minlength"> minLen</span>
+            </span>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Mot De Passe:
+            </mat-label>
+            <div ngNoForm class="password"> <!-- Prevent form validation on this wrapper -->
+                <input matInput name="password" id="password" required formControlName="password" placeholder="Mot De Passe"
+                    [type]="hide ? 'password' : 'text'">
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon [innerHTML]="hide ? eyeOpen : eyeSlash"></mat-icon>
+                </button>
+            </div>
+        </mat-form-field>
+        <span class="text-danger">{{ getPasswordErrorMessage() }}</span>
+
+        <mat-form-field>
+            <mat-label>Region</mat-label>
+            <mat-select formControlName="region" required (change)="changeRegion($event.value)">
+                <mat-option value="null">--Select--</mat-option>
+                <mat-option *ngFor="let i of regions" [value]="i.nom">
+                    {{i.nom}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="text-danger">{{ getRegionErrorMessage() }}</div>
+
+        <mat-label>Role</mat-label> <br>
+        <mat-radio-group aria-label="Select an option" formControlName="role" required
+            (change)="changeRole($event.value)">
+            <mat-radio-button value="admin">Admin</mat-radio-button>
+            <mat-radio-button value="responsable">Responsable</mat-radio-button>
+            <mat-radio-button value="agent">Agent</mat-radio-button>
+        </mat-radio-group>
+
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button type="submit" color="primary">Save</button>
+        <a (click)="closepopup()" mat-raised-button color="warn">Close</a>
+        <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button>
+    </div>
+</form>

@@ -1,0 +1,58 @@
+<form  #addClientForm="ngForm" (ngSubmit)="addClient()" >
+
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>
+                Name:
+            </mat-label>
+            <input matInput [(ngModel)]="client.name" [ngModelOptions]="{standalone: true}" placeholder="Nom Client">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Contact N°1:
+            </mat-label>
+            <input matInput [(ngModel)]="client.contact1" [ngModelOptions]="{standalone: true}" placeholder="Contact N°1">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Telephone N°1:
+            </mat-label>
+            <input matInput [(ngModel)]="client.tel1" [ngModelOptions]="{standalone: true}" placeholder="Telephone N°1">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Contact N°2:
+            </mat-label>
+            <input matInput [(ngModel)]="client.contact2" [ngModelOptions]="{standalone: true}" placeholder="Contact N°2">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Telephone N°2:
+            </mat-label>
+            <input matInput [(ngModel)]="client.tel2" [ngModelOptions]="{standalone: true}" placeholder="Telephone N°2">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Mail:
+            </mat-label>
+            <input matInput [(ngModel)]="client.mail" [ngModelOptions]="{standalone: true}" placeholder="Mail" type="email">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Region:
+            </mat-label>
+            <input matInput [(ngModel)]="client.region" [ngModelOptions]="{standalone: true}" placeholder="Region">
+        </mat-form-field><mat-form-field>
+            <mat-label>
+                Pays:
+            </mat-label>
+            <input matInput [(ngModel)]="client.pays" [ngModelOptions]="{standalone: true}" placeholder="Pays">
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button type="submit" color="primary">Save</button>
+      <a (click)="closepopup()" mat-raised-button color="warn">Close</a>
+      <button mat-raised-button type="button" [mat-dialog-close]="closemessage" color="accent">Cancel</button>
+    </div>
+    </form>

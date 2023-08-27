@@ -1,0 +1,52 @@
+table {
+  margin-top: 10px;
+  width: 100%;
+}
+
+button {
+  margin-bottom: 5px;
+}
+
+.mat-form-field {
+  margin-top: 10px;
+  font-size: 16px;
+  width: 100%;
+}
+.mat-header-cell,
+.mat-cell{
+  padding: 0 10px;
+}
+.th1,
+.td1 {
+  width: 5%;
+}
+
+.th-button,
+.td-button {
+  width: 5%;
+}
+
+.th-email,
+.td-email {
+  width: 25%;
+}
+
+/* 
+  .th2,
+  .td2 {
+    width: 20%;
+  }
+  
+  .th3,
+  .td3 {
+    width: 30%;
+  }
+*/
+.mat-paginator {
+  width: 100%;
+  
+}
+.table-container {
+  height: 70vh; /* Set the desired height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}

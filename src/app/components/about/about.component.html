@@ -1,0 +1,30 @@
+<app-header (sideNavToggled)="sideNavStatus = $event;"></app-header>
+    <main>
+        <app-side-nav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-side-nav>
+        <div class="display-body p-3" [ngClass]="{'display-body-shrink':sideNavStatus}">
+            <div class="display-body-content">
+                <div class="display-body-content-partie1">
+                    <h1 class="fs-1">LA GRIFFE... VOTRE PARTENAIRE DE L'ÉTIQUETAGE</h1>
+                    <p class="fs-5">Vieux de plusieurs décennies, le secteur Textile &amp; Habillement ont connu des évolutions spectaculaires depuis les années 70.
+                        Née il y a plus de vingt ans, la Griffe, désormais leader de l’étiquetage, anticipe sur les grandes mutations de la filière pour offrir la gamme
+                        la plus complète et la plus diversifiée pour satisfaire une clientèle de plus en plus exigeante de par les conditions du marché international.
+                        Résolument tournée à l’international, la Griffe écoule plus de 80 % de sa production sur les marchés étrangers.</p>
+                </div>
+                <div class="image-video-wrp">
+                    <figure>
+                        <ng-container *ngIf="videodisabled; else videoblock">
+                            <img (click)="changeImg()" [title]="play"src="https://la-griffe.com/wp-content/uploads/2019/08/play_btn-min-1.jpg" class="img-fluid thumblin">
+                        </ng-container>
+                        <ng-template #videoblock>
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ctFXFUhjAtU?autoplay=1&mute=1&controls=0" class="img-fluid thumblin" allowfullscreen></iframe>
+                        </ng-template>
+                        <div class="play-icon-box">
+                            <img (click)="changeImg()" [title]="play" [src]="videoIcon" alt="">
+                        </div>
+                    </figure>
+                </div>
+            </div>
+            <div class="cdisplay-body-content"></div>
+        </div>
+
+    </main>

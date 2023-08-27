@@ -1,0 +1,57 @@
+nav{
+    height: 100%;
+}
+
+.side-nav-button{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.side-nav-button:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 30%;
+}
+img{
+    margin-right: 5px;
+}
+.nav-item-backup{
+    display: none;
+}
+
+/* Pour les petits écrans */
+@media (max-width: 576px) {
+    .side-nav-button {
+        font-size: 1rem;
+    }
+    .profile-logo{
+        display: none;
+    }
+    .nav-item-backup{
+        display: block;
+    }
+}
+
+/* Pour les écrans de taille moyenne */
+@media (min-width: 577px) and (max-width: 991px) {
+    .side-nav-button {
+        font-size: 1.25rem;
+    }
+    .profile-logo{
+        display: none;
+
+    }
+    .nav-item-backup{
+        display: block;
+    }
+}
+
+/* Pour les grands écrans */
+@media (min-width: 992px) {
+    .side-nav-button {
+        font-size: 1.5rem;
+    }
+
+}

@@ -1,0 +1,18 @@
+<app-header (sideNavToggled)="sideNavStatus = $event;"></app-header>
+<main>
+    <app-side-nav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}"></app-side-nav>
+    <div class="display-body p-3" [ngClass]="{'display-body-shrink':sideNavStatus}">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                    role="tab" aria-controls="home" aria-selected="true"><i>Liste De Regions</i></button>
+            </li>
+
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <app-regions-table></app-regions-table>
+            </div>
+        </div>
+    </div>
+</main>

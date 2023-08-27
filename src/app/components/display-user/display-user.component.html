@@ -1,0 +1,39 @@
+<form #displayUserForm="ngForm">
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content *ngIf="findedUser">
+        <mat-form-field>
+            <mat-label>
+                Nom:
+            </mat-label>
+            <input matInput [(ngModel)]="findedUser.firstName" [ngModelOptions]="{standalone: true}"
+                placeholder="Nom Utilisateur">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>
+                Prénom:
+            </mat-label>
+            <input matInput [(ngModel)]="findedUser.lastName" [ngModelOptions]="{standalone: true}"
+                placeholder="Prénom Utilisateur">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>
+                Email:
+            </mat-label>
+            <input matInput [(ngModel)]="findedUser.email" [ngModelOptions]="{standalone: true}" placeholder="Email">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="findedUser.region">
+            <mat-label>
+                Region:
+            </mat-label>
+            <input matInput [(ngModel)]="findedUser.region.nom" [ngModelOptions]="{standalone: true}"
+                placeholder="Region">
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <a (click)="closepopup()" mat-raised-button color="warn">Close</a>
+        <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button>
+    </div>
+</form>

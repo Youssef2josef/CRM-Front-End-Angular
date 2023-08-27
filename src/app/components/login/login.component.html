@@ -1,0 +1,41 @@
+<div class="login-body">
+  <div class="box">
+    <form [formGroup]="loginForm">
+      <h2>{{title}}</h2>
+      <div class="inputBox">
+        <input type="text" name="" id="" required formControlName="email">
+        <span class="span-details" [@inputBoxAnimation]>Email</span>
+
+        <i [@inputIAnimation]></i>
+      </div><span class="text-danger" *ngIf="
+              loginForm.controls['email'].invalid &&
+              (loginForm.controls['email'].touched ||
+                loginForm.controls['email'].dirty)">
+
+        <span *ngIf="loginForm.controls['email'].errors?.required"> required</span>
+        <span *ngIf="loginForm.controls['email'].errors?.email"> email invalid</span></span>
+      <div class="inputBox">
+        <input type="password" name="" id="" required formControlName="password">
+        <span class="span-details" [@inputBoxAnimation]>Mot de Passe</span>
+
+        <i [@inputIAnimation]></i>
+      </div><span class="text-danger" *ngIf="
+              loginForm.controls['password'].invalid &&
+              (loginForm.controls['password'].touched ||
+              loginForm.controls['password'].dirty)">
+
+        <span *ngIf="loginForm.controls['password'].errors?.required"> required</span>
+        <span *ngIf="loginForm.controls['password'].errors?.minlength"> minLen</span>
+      </span>
+      <button type="submit" (click)="login()">
+        Login
+      </button>
+      <div class="text-danger">{{ messageErreur}}</div>
+
+      <div class="links">
+        <a routerLink=""></a>
+        <a routerLink="register">Inscription</a>
+      </div>
+    </form>
+  </div>
+</div>

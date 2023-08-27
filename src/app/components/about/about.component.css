@@ -1,0 +1,153 @@
+:root {
+    --poppins: 'Poppins', sans-serif;
+    --lato: 'Lato', sans-serif;
+    --light: #F9F9F9;
+    --blue: #3C91E6;
+    --light-blue: #CFE8FF;
+    --grey: #eee;
+    --dark-grey: #AAAAAA;
+    --dark: #342E37;
+    --red: #DB504A;
+    --yellow: #FFCE26;
+    --light-yellow: #FFF2C6;
+    --orange: #FD7238;
+    --light-orange: #FFE0D3;
+}
+
+app-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 4rem;
+    z-index: 2;
+}
+
+.black-border {
+    border: 1px solid black;
+}
+
+main {
+    position: absolute;
+    width: 100%;
+    top: 3.5rem;
+    z-index: 1;
+}
+
+app-side-nav {
+    position: absolute;
+    background-color: rgba(34, 34, 34, 1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    left: 0rem;
+    width: 60px;
+    height: 120vh;
+    border-top: 1px solid white;
+    overflow-x: hidden;
+    white-space: nowrap;
+    transition: width 250ms ease-in-o;
+    @media (max-width: 768px) {
+        height: 180vh;
+    }
+
+}
+
+.app-side-nav-open {
+    width: 250px;
+}
+
+.display-body {
+    position: absolute;
+    left: 60px;
+    width: calc(100% - 60px);
+}
+
+.display-body-shrink {
+    position: absolute;
+    width: calc(100% - 250px);
+    left: 250px;
+}
+
+.display-body-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+
+    
+}
+.display-body-content-partie1 {
+    width: 100%;
+    @media (min-width: 768px) {
+        width: 70%;
+    }
+}
+
+.image-video-wrp {
+    width: 100%;
+    margin-top: 20px;
+
+    @media (min-width: 768px) {
+        width: 30%;
+        margin-top: 0;
+    }
+}
+
+.image-video-wrp figure {
+    position: relative;
+    margin: 0;
+}
+
+.image-video-wrp figure .thumblin {
+    height: 265px;
+    object-fit: cover;
+    width: 100%;
+    border: 2px solid #000;
+}
+
+.image-video-wrp figure iframe {
+    height: 265px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.play-icon-box {
+    position: absolute;
+    right: 25px;
+    bottom: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: #fff;
+    box-shadow: 0px 3px 6px #00000029;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.play-icon-box img {
+    position: relative;
+    left: 2px;
+    height: 20px;
+    width: 30px;
+}
+
+p {
+    width: 80%;
+    margin: 0;
+    
+}
+h1{
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+}
+@media (min-width: 768px) {
+    .display-body-content {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+    }

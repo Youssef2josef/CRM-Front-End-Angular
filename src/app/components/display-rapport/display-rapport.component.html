@@ -1,0 +1,65 @@
+<form #displayRapportForm="ngForm">
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content *ngIf="findedRapport">
+        <mat-form-field>
+            <mat-label>
+                Nom:
+            </mat-label>
+            <input matInput [(ngModel)]="findedRapport.user.firstName" [ngModelOptions]="{standalone: true}"
+                placeholder="Nom Utilisateur">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>
+                Prénom:
+            </mat-label>
+            <input matInput [(ngModel)]="findedRapport.user.lastName" [ngModelOptions]="{standalone: true}"
+                placeholder="Prénom Utilisateur">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>
+                Email:
+            </mat-label>
+            <input matInput [(ngModel)]="findedRapport.user.email" [ngModelOptions]="{standalone: true}" placeholder="Email">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>
+                Region:
+            </mat-label>
+            <input matInput [(ngModel)]="findedRapport.region.nom" [ngModelOptions]="{standalone: true}"
+                placeholder="Region">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Client:
+            </mat-label>
+            <input matInput [(ngModel)]="findedRapport.client.name" [ngModelOptions]="{standalone: true}"
+                placeholder="Client">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Date:
+            </mat-label>
+            <input matInput [(ngModel)]="findedRapport.date" [ngModelOptions]="{standalone: true}"
+                placeholder="date">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Text:
+            </mat-label>
+            <textarea matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="2"
+            cdkAutosizeMaxRows="10" [(ngModel)]="findedRapport.text" [ngModelOptions]="{standalone: true}"></textarea>
+            
+        </mat-form-field>
+        
+    </div>
+    <div mat-dialog-actions>
+        <a (click)="closepopup()" mat-raised-button color="warn">Close</a>
+        <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button>
+    </div>
+</form>

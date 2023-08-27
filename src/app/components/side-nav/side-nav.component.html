@@ -1,0 +1,10 @@
+<div class="side-nav-content">
+    <ul class="nav-list" [ngClass]="{'nav-list-open':sideNavStatus}">
+        <li class="nav-list-item" *ngFor="let i of list">
+            <i class="{{i.icon}}"></i>
+                <span>
+                    <a routerLink="/{{i.name}}">{{i.name}}</a>
+                </span>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,105 @@
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  
+  <div class="mat-elevation-z8" class="table-responsive text-nowrap table-container">
+    <table mat-table [dataSource]="dataSource" matSort class="table table-bordered table-hover table-striped">
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="th1" ><button type="button"
+            class="btn btn-primary position-relative">ID</button> </th>
+        <td mat-cell *matCellDef="let row" class="td1">{{ row.id || 'Introuvable' }}</td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > <button type="button"
+            class="btn btn-primary position-relative">Nom</button> </th>
+        <td mat-cell *matCellDef="let row" >{{ row.name || 'Introuvable'}}</td>
+      </ng-container>
+      
+      <!-- Name contact1 -->
+      <ng-container matColumnDef="contact1">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > <button type="button"
+            class="btn btn-primary position-relative">Contact1</button> </th>
+        <td mat-cell *matCellDef="let row" >{{ row.contact1 || 'Introuvable'}}</td>
+      </ng-container>
+
+      <!-- Name tel1 -->
+      <ng-container matColumnDef="tel1">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > <button type="button"
+            class="btn btn-primary position-relative">Tel 1</button> </th>
+        <td mat-cell *matCellDef="let row" >{{ row.tel1 || 'Introuvable'}}</td>
+      </ng-container>
+
+      <!-- Name contact2 -->
+      <ng-container matColumnDef="contact2">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > <button type="button"
+            class="btn btn-primary position-relative">Contact2</button> </th>
+        <td mat-cell *matCellDef="let row" >{{ row.contact2 || 'Introuvable'}}</td>
+      </ng-container>
+
+      <!-- Name tel2 -->
+      <ng-container matColumnDef="tel2">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > <button type="button"
+            class="btn btn-primary position-relative">Tel 2</button> </th>
+        <td mat-cell *matCellDef="let row" >{{ row.tel2 || 'Introuvable'}}</td>
+      </ng-container>
+
+      <!-- Name mail -->
+      <ng-container matColumnDef="mail">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-mail"> <button type="button"
+            class="btn btn-primary position-relative">Mail</button> </th>
+        <td mat-cell *matCellDef="let row" class="td-mail">{{ row.mail || 'Introuvable'}}</td>
+      </ng-container>
+
+      <!-- Name region -->
+      <ng-container matColumnDef="region">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > <button type="button"
+            class="btn btn-primary position-relative">Region</button> </th>
+        <td mat-cell *matCellDef="let row" >{{ row.region || 'Introuvable'}}</td>
+      </ng-container>
+
+      <!-- Name pays -->
+      <ng-container matColumnDef="pays">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > <button type="button"
+            class="btn btn-primary position-relative">Pays</button> </th>
+        <td mat-cell *matCellDef="let row">{{ row.pays || 'Introuvable'}}</td>
+      </ng-container>
+      
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef ><button type="button" class="btn btn-primary position-relative">
+            Actions </button></th>
+        <td mat-cell *matCellDef="let row" >
+          <button mat-icon-button class="btn btn-primary" (click)="editRow(row.id)">
+            <mat-icon class="fa-solid fa-pen-to-square fa-fade"></mat-icon>
+          </button>
+          <button mat-icon-button class="btn btn-primary" (click)="deleteRow(row.id)">
+            <img src="assets/images/delete.gif" height="20px" alt="">
+          </button>
+          <button mat-icon-button class="btn btn-primary" (click)="viewDetails(row.id)">
+            <mat-icon class="fa-solid fa-display fa-fade"></mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="add">
+        <th mat-header-cell *matHeaderCellDef class="th-button" >
+          <button type="button" class="btn btn-success position-relative" (click)="openPopUp()">
+            Ajouter Un Client
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <i class="fa-solid fa-plus fa-beat-fade"></i>
+            </span>
+          </button>
+        </th>
+        <td mat-cell *matCellDef="let row" class="td-button" ></td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>

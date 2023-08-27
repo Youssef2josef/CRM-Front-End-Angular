@@ -1,0 +1,74 @@
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrer par Nom ou Prénom">
+  </mat-form-field>
+  
+  <div class="mat-elevation-z8" class="table-responsive text-nowrap table-container">
+    <table mat-table [dataSource]="dataSource" matSort class="table table-bordered table-hover table-striped">
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="th1"><button type="button"
+            class="btn btn-primary position-relative">ID</button> </th>
+        <td mat-cell *matCellDef="let row" class="td1">{{ row.id }}</td>
+      </ng-container>
+  
+      <!-- firstName Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="th3"> <button type="button"
+            class="btn btn-primary position-relative">Prénom</button> </th>
+        <td mat-cell *matCellDef="let row" class="td3">{{ row.firstName }}</td>
+      </ng-container>
+  
+      <!-- lastName Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="th3"> <button type="button"
+            class="btn btn-primary position-relative">Nom</button> </th>
+        <td mat-cell *matCellDef="let row" class="td3">{{ row.lastName }}</td>
+      </ng-container>
+  
+      <!-- email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-email"> <button type="button"
+            class="btn btn-primary position-relative">Email</button> </th>
+        <td mat-cell *matCellDef="let row" class="td-email">{{ row.email }}</td>
+      </ng-container>
+  
+      <!-- region.nom Column -->
+      <ng-container matColumnDef="regionNom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="th3"> <button type="button"
+            class="btn btn-primary position-relative">Nom Region</button> </th>
+        <td mat-cell *matCellDef="let row" class="td3">{{ row.region?.nom || 'Introuvable'}}</td>
+      </ng-container>
+  
+      <!-- Role Column-->
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="th3">
+          <button type="button" class="btn btn-primary position-relative">Rôle</button>
+        </th>
+        <td mat-cell *matCellDef="let row" class="td3">
+          <ng-container *ngFor="let role of row.roles">
+            <p *ngIf="role.name == 'ROLE_RESPONSABLE'">Responsable</p>
+            <p *ngIf="role.name == 'ROLE_ADMIN'">Admin</p>
+          </ng-container>
+        </td>
+      </ng-container>
+  
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="th3"><button type="button" class="btn btn-primary position-relative">
+            Actions </button></th>
+        <td mat-cell *matCellDef="let row" class="td3">
+          <button mat-icon-button class="btn btn-primary" (click)="viewDetails(row.id)">
+            <mat-icon class="fa-solid fa-display fa-fade"></mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [hidden]="checkUserRole(row)">
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>

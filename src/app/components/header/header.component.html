@@ -1,0 +1,54 @@
+<div class="navbar navbar-expand-lg navbar-dark bg-dark px-2">
+        <div class="side-nav-button p-2 me-lg-3 text-light" (click)="SideNavToggle()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <a (click)="doSomething()" class="navbar-brand px-4"><img src="assets/images/LaGriffe_Internationale.jpg" height="40px">LaGriffe Internationale</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item dropdown">
+                    <a (click)="doSomething()" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Home</a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a routerLink="/Dashboard" class="dropdown-item">Dashboard</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a (click)="doSomething()" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Menu Travail</a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a routerLink="/Agents" class="dropdown-item">Agents</a></li>
+                        <li><a routerLink="/Responsables" class="dropdown-item">Responsables</a></li>
+                        <li><a routerLink="/Dashboard" class="dropdown-item">Suivi Rapports</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a (click)="doSomething()" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Configuration</a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a routerLink="/Settings" class="dropdown-item">Parametres Personnelles</a></li>
+                        <li><a routerLink="/Contact" class="dropdown-item">Contact</a></li>
+                        <li><a routerLink="/About" class="dropdown-item">A Propos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item-backup dropdown">
+                    <a (click)="doSomething()" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">{{name || 'Connexion'}}</a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                    <li *ngIf="name == null"><a routerLink="/register" class="dropdown-item">Sign Up</a></li>
+                    <li *ngIf="name == null"><a routerLink="/" class="dropdown-item">Log In</a></li>
+                    <li><a routerLink="/Dashboard" class="dropdown-item">Your Profile</a></li>
+                    <li><button class="dropdown-item" (click)="logout()">Log Out</button></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="profile-logo dropstart">
+                <button class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">{{name || 'Connexion'}}</button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li *ngIf="name == null"><a routerLink="/register" class="dropdown-item">Sign Up</a></li>
+                    <li *ngIf="name == null"><a routerLink="/" class="dropdown-item">Log In</a></li>
+                    <li *ngIf="name != null"><a routerLink="/Dashboard" class="dropdown-item">Your Profile</a></li>
+                    <li *ngIf="name != null"><button class="dropdown-item" (click)="logout()">Log Out</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>

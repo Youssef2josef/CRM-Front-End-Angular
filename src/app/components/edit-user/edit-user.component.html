@@ -1,0 +1,16 @@
+<form  #editUserForm="ngForm" (ngSubmit)="editUser()" >
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content *ngIf="findedUser">
+        <mat-form-field>
+            <mat-label>
+                Role:
+            </mat-label>
+            <input matInput [(ngModel)]="findedUser.roles[0].name" [ngModelOptions]="{standalone: true}" name="roles[0].name" placeholder="Role">
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button type="submit" color="primary">Save</button>
+      <a (click)="closepopup()" mat-raised-button color="warn">Close</a>
+      <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button>
+    </div>
+    </form>

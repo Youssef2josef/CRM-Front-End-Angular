@@ -1,0 +1,70 @@
+table {
+  margin-top: 10px;
+  width: 100%;
+}
+
+button {
+  margin-bottom: 5px;
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 0 10px;
+}
+
+.th1,
+.td1 {
+  width: 5%;
+}
+
+.th-button,
+.td-button {
+  width: 5%;
+}
+
+.th-email,
+.td-email {
+  width: 25%;
+}
+
+/* 
+    .th2,
+    .td2 {
+      width: 20%;
+    }
+    
+    .th3,
+    .td3 {
+      width: 30%;
+    }
+  */
+.mat-paginator {
+  width: 100%;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-form-field:not(.date-debut,.date-fin) {
+  margin-right: 12px;
+  margin-top: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+.date-debut,.date-fin{
+  width: 50%;
+}
+.boutton-date-debut{
+  margin-right:5px;
+}
+.table-container {
+  height: 60vh; /* Set the desired height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}

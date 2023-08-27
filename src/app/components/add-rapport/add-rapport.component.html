@@ -1,0 +1,78 @@
+<form [formGroup]="multiStep" (ngSubmit)="addRapport()">
+
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content>
+        
+        <mat-form-field>
+            <mat-label>Font size</mat-label>
+            <mat-select #fontSize value="16px" (selectionChange)="triggerResize()">
+              <mat-option value="10px">10px</mat-option>
+              <mat-option value="12px">12px</mat-option>
+              <mat-option value="14px">14px</mat-option>
+              <mat-option value="16px">16px</mat-option>
+              <mat-option value="18px">18px</mat-option>
+              <mat-option value="20px">20px</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <mat-form-field [style.fontSize]="fontSize.value">
+            <mat-label>
+                Dimensionner automatiquement le contenu :
+            </mat-label>
+            <textarea matInput formControlName="text"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" placeholder="Text Rapport"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Region</mat-label>
+            <mat-select formControlName="regionNom" required (change)="changeRegion($event.value)">
+                <mat-option value="null">--Select--</mat-option>
+                <mat-option *ngFor="let i of regions" [value]="i.nom">
+                    {{i.nom}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="text-danger">{{ getRegionErrorMessage() }}</div>
+
+        <mat-form-field>
+            <mat-label>Type Rapport</mat-label>
+            <mat-select formControlName="objectNom" required (change)="changeObject($event.value)">
+                <mat-option value="null">--Select--</mat-option>
+                <mat-option *ngFor="let n of objects" [value]="n.nom">
+                    {{n.nom}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="text-danger">{{ getObjectErrorMessage() }}</div>
+
+        <mat-form-field>
+            <mat-label>Nom Client</mat-label>
+            <mat-select formControlName="clientNom" required (change)="changeClient($event.value)">
+                <mat-option value="null">--Select--</mat-option>
+                <mat-option *ngFor="let x of clients" [value]="x.name">
+                    {{x.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="text-danger">{{ getClientErrorMessage() }}</div>
+
+        
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput formControlName="date" [matDatepicker]="picker">
+            <mat-hint>{{date}}</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+          
+
+
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button type="submit" color="primary">Save</button>
+        <a (click)="closepopup()" mat-raised-button color="warn">Close</a>
+        <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button>
+    </div>
+</form>
