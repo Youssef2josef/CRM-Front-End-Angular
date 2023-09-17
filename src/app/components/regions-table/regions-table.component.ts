@@ -191,12 +191,11 @@ export class RegionsTableComponent implements OnInit {
       }
     })
   }
-  openPopUp(code: any, title: any,component:any){
+  openPopUp(){
     this.dialog.open(AddRegionComponent,{
       width:'500px',
       data:{
         title: 'Ajout Region',
-        code: code
       }
     })
   }

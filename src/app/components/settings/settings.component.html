@@ -59,7 +59,7 @@
                 </mat-action-row>
             </mat-expansion-panel>
 
-            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle  *ngIf="findedUser.region != null">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Region Info

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./regions.component.css']
 })
 export class RegionsComponent implements OnInit {
+  sideNavStatus: boolean = false;
 
   constructor() { }
 

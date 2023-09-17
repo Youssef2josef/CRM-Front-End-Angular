@@ -114,7 +114,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.messageErreur = "Erreur lors de l'authentification : " + error.statusText;
       }
-      console.log(error);
+ //     console.log(error);
     })
   }
 

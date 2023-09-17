@@ -167,12 +167,11 @@ export class ObjectsTableComponent implements OnInit {
       }
     })
   }
-  openPopUp(code: any, title: any,component:any){
+  openPopUp(){
     this.dialog.open(AddObjectComponent,{
       width:'500px',
       data:{
         title: 'Ajout Objet',
-        code: code
       }
     })
   }

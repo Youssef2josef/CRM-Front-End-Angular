@@ -9,6 +9,7 @@ export class AboutComponent implements OnInit {
   videoIcon:string = "./assets/images/play.png";
   play:string = "Play";
   videodisabled:boolean = true;
+  sideNavStatus: boolean = false;
 
   changeImg(){
     if(this.play == "Play")

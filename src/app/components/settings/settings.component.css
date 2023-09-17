@@ -39,7 +39,7 @@ app-side-nav {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     left: 0rem;
     width: 60px;
-    min-height: 150vh;
+    min-height: 110vh;
     border-top: 1px solid white;
     overflow-x: hidden;
     overflow-y: auto;

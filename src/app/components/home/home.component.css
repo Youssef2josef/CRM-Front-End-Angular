@@ -57,3 +57,8 @@ app-side-nav{
     left: 250px;
 }
 
+@media screen and (max-width: 950px) {
+    app-side-nav {
+        height: 100vh;
+    }
+}

@@ -40,11 +40,7 @@ export class SideNavComponent implements OnInit {
       name: 'Responsables',
       icon: 'fa-solid fa-user-gear fa-beat-fade',
     },
-    {
-      number: '7',
-      name: 'About',
-      icon: 'fa-solid fa-circle-info fa-bounce',
-    },
+
   ]
   constructor() { }
 

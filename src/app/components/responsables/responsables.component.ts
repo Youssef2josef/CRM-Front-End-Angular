@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./responsables.component.css']
 })
 export class ResponsablesComponent implements OnInit {
+  sideNavStatus: boolean = false;
 
   constructor() { }
 

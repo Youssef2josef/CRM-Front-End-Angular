@@ -192,12 +192,11 @@ export class AgentsTableComponent implements OnInit {
     })
   }
 
-  openPopUp(code: any, title: any, component: any) {
+  openPopUp() {
     this.dialog.open(AddUserComponent, {
       width: '500px',
       data: {
         title: 'Ajout Utilisateur',
-        code: code
       }
     })
   }

@@ -27,15 +27,19 @@ export class SettingsComponent implements OnInit {
   firstNameSession: any;
   requestPayload:any;
   step = 0;
+  sideNavStatus: boolean = false;
+
   constructor(private router:Router,private formBuilder: FormBuilder,private agentService:AgentService,private agentDataService:AgentDataService,private regionService:RegionService) { }
 
   ngOnInit() {
     this.checkAuthentification();
   
     this.agentService.getUserById(this.id).subscribe((res) => {
+      //console.log(res);
+
       this.findedUser = res;
       this.findedUser.password = "";
-      console.log(this.findedUser);
+      //console.log(this.findedUser);
   
       // Move the logic that depends on findedUser inside this subscription block
       this.getAllRegions();

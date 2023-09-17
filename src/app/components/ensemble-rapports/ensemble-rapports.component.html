@@ -1,5 +1,5 @@
 <mat-form-field>
-    <input matInput [(ngModel)]="filterValue" (keyup)="applyFilterColumn($event)"
+    <input matInput [(ngModel)]="filterValue" (keyup)="applyFilterColumn()"
         placeholder="Critères meilleurs filtrage :Type / Nom / Prénom / Email / Client / Region">
         <button mat-raised-button color="warn" matSuffix (click)="resetFilterValue()" class="boutton-date-debut">
             <i class="fa-solid fa-circle-xmark"></i> Reset</button>
@@ -7,7 +7,7 @@
 
 <mat-form-field class="date-debut">
     <input matInput [matDatepicker]="startDatePicker" placeholder="Date de début" [(ngModel)]="startDateFilter"
-        (dateChange)="applyFilterColumn($event)">
+        (dateChange)="applyFilterColumn()">
     <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
     <mat-datepicker #startDatePicker></mat-datepicker>
     <button mat-raised-button color="warn" matSuffix (click)="resetStartDate()" class="boutton-date-debut">
@@ -16,7 +16,7 @@
 
 <mat-form-field class="date-fin">
     <input matInput [matDatepicker]="endDatePicker" placeholder="Date de fin" [(ngModel)]="endDateFilter"
-        (dateChange)="applyFilterColumn($event)">
+        (dateChange)="applyFilterColumn()">
     <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
     <mat-datepicker #endDatePicker></mat-datepicker>
     <button mat-raised-button color="warn" matSuffix (click)="resetEndDate()" class="boutton-date-fin">
@@ -26,7 +26,7 @@
 
 <mat-form-field>
     <input matInput [matDatepicker]="singleDatePicker" placeholder="Date unique" [(ngModel)]="singleDateFilter"
-        (dateChange)="applyFilterColumn($event)">
+        (dateChange)="applyFilterColumn()">
     <mat-datepicker-toggle matSuffix [for]="singleDatePicker"></mat-datepicker-toggle>
     <mat-datepicker #singleDatePicker></mat-datepicker>
     <button mat-raised-button color="warn" matSuffix (click)="resetSingleDate()" class="boutton-date-debut">
@@ -39,7 +39,7 @@
 </button>
 
 <div class="mat-elevation-z8" class="table-responsive text-nowrap table-container">
-    <table mat-table id="DataTable" [dataSource]="dataSource" matSort class="table table-hover table-striped">
+    <table mat-table id="DataTable" [dataSource]="dataSource" matSort class="table table-bordered table-hover table-striped">
 
         <!-- ID Column -->
         <ng-container matColumnDef="id">
@@ -143,7 +143,7 @@
             </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 

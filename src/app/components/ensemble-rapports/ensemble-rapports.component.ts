@@ -54,7 +54,6 @@ export class EnsembleRapportsComponent implements OnInit {
   fileName: any = 'ExcelSheet.xlsx';
   step = 0;
 
-
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   authUserRole: any;
@@ -91,7 +90,7 @@ export class EnsembleRapportsComponent implements OnInit {
     this.rapportService.getAllRapports().subscribe(
       (data: UserData[]) => {
         this.rapports = data;
-        console.log(data);
+        //console.log(data);
         this.dataSource.data = this.rapports; // Update dataSource with fetched data
       },
       (error) => {
@@ -104,7 +103,7 @@ export class EnsembleRapportsComponent implements OnInit {
             confirmButtonText: 'OK',
             timer: 2000 // Durée en millisecondes (3 secondes dans cet exemple)
           });
-          console.log(error);
+          //console.log(error);
         }
         else if (error.message == "Http failure response for http://localhost:8086/api/rapportSuivi: 401 OK") {
           Swal.fire({
@@ -124,7 +123,7 @@ export class EnsembleRapportsComponent implements OnInit {
             confirmButtonText: 'OK',
             timer: 2000 // Durée en millisecondes (3 secondes dans cet exemple)
           });
-          console.log(error);
+          //console.log(error);
         }
       }
     );
@@ -207,8 +206,6 @@ export class EnsembleRapportsComponent implements OnInit {
       this.dataSource.paginator.length = filteredUsers.length;
     }
   }
-
-
 
   checkUserRapport(): boolean {
     if (sessionStorage.getItem("auth-user") != null) {
@@ -327,9 +324,9 @@ export class EnsembleRapportsComponent implements OnInit {
     this.endDateFilter = null;
     this.applyFilterColumn();
   }
+  
   resetSingleDate() {
     this.singleDateFilter = null;
     this.applyFilterColumn();
   }
-  
 }

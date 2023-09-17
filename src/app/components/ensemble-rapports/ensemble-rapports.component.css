@@ -52,19 +52,25 @@ button {
   align-items: center;
 }
 
-mat-form-field:not(.date-debut,.date-fin) {
+mat-form-field:not(.date-debut, .date-fin) {
   margin-right: 12px;
   margin-top: 5px;
   font-size: 16px;
   width: 100%;
 }
-.date-debut,.date-fin{
+
+.date-debut,
+.date-fin {
   width: 50%;
 }
-.boutton-date-debut{
-  margin-right:5px;
+
+.boutton-date-debut {
+  margin-right: 5px;
 }
+
 .table-container {
-  height: 60vh; /* Set the desired height */
-  overflow-y: auto; /* Enable vertical scrolling */
+  height: 60vh;
+  /* Set the desired height */
+  overflow-y: auto;
+  /* Enable vertical scrolling */
 }

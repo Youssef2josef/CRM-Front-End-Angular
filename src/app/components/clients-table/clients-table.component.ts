@@ -169,12 +169,11 @@ export class ClientsTableComponent implements OnInit {
       }
     })
   }
-  openPopUp(code: any, title: any, component: any) {
+  openPopUp() {
     this.dialog.open(AddClientComponent, {
       width: '500px',
       data: {
         title: 'Ajout Client',
-        code: code
       }
     })
   }

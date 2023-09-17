@@ -137,14 +137,53 @@ export class SuiviRapportsComponent implements OnInit {
     this.dataSource.paginator.length = filteredUsers.length;
   }
 
-  openPopUp(code: any, title: any, component: any) {
+  openPopUp() {
     this.dialog.open(AddRapportComponent, {
       width: '500px',
       data: {
         title: 'Ajout Rapport',
-        code: code
       }
     })
+  }
+
+  deleteRow(id: any) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+      title: 'Vous êtes sure?',
+      text: "Vous ne pourrez pas revenir en arrière!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, suprrime!',
+      cancelButtonText: 'Non, annule!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User confirmed the deletion, execute the deletion logic
+        this.rapportService.deleteRapportById(id).subscribe((res) => {
+          console.log("Deleted:", res);
+          this.getAllRapports();
+          this.router.navigate(['/Dashboard#profile']);
+        });
+
+        swalWithBootstrapButtons.fire(
+          'Excellent!',
+          'Rapport a été supprimé avec succés . Raifraichir la page',
+          'success'
+        );
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire(
+          'Annulé',
+          'Processus a été annulé :)',
+          'error'
+        );
+      }
+    });
   }
 
   editRow(id: any) {
